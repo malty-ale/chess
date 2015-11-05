@@ -33,7 +33,9 @@ class Board
   end
 end
 
-a = Board.new
-puts a.square("b2").name
-    
-    
+
+class Game
+  def start_game
+    @board = Board.new
+  end
+end
