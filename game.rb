@@ -1,8 +1,9 @@
 class Position
-  attr_accessor :occupant, :position
+  attr_accessor :occupant, :position, :name
   
   def initialize (position)
     @position = convert(position)
+    @name = position
   end
   
   def convert(position)
@@ -12,3 +13,27 @@ class Position
     array_position
   end
 end
+
+class Board
+  def initialize
+    create_board
+  end
+  
+  def create_board
+    a = ["a","b","c","d","e","f","g","h"]
+    b = ["1","2","3","4","5","6","7","8"]
+    @position_names = []
+    a.each {|i| b.each {|j| @position_names << i+j}}
+    
+    @positions = @position_names.map {|i| Position.new(i)}
+  end
+  
+  def square(a)
+    @positions[@position_names.index(a)]
+  end
+end
+
+a = Board.new
+puts a.square("b2").name
+    
+    
